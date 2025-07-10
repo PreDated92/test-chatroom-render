@@ -34,4 +34,4 @@ server.listen(PORT, () => {
 function checkRoomExists(a) {
   return true; // Dummy implementation first
 }
-module.exports = { add: checkRoomExists };
+module.exports = { checkRoomExists };
