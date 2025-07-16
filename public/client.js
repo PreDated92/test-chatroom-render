@@ -37,3 +37,11 @@ socket.on('chat message', (msg) => {
   li.textContent = "Friend: " + msg;
   messages.appendChild(li);
 });
+
+socket.on('chat history', (messages) => {
+  messages.forEach((message) => {
+    const li = document.createElement('li');
+    li.textContent = `${message.sender}: ${message.text}`;
+    messages.appendChild(li);
+  });
+});
