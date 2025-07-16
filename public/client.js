@@ -38,10 +38,10 @@ socket.on('chat message', (msg) => {
   messages.appendChild(li);
 });
 
-socket.on('chat history', (messages) => {
-  messages.forEach((message) => {
+socket.on('chat history', (msgs) => {
+  msgs.forEach((msg) => {
     const li = document.createElement('li');
-    li.textContent = `${message.sender}: ${message.text}`;
+    li.textContent = `${msg.sender}: ${msg.text}`;
     messages.appendChild(li);
   });
 });
