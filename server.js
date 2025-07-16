@@ -14,8 +14,10 @@ const io = new Server(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Database
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// Database, connect only if not test
+if (require.main === module) {
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+}
 
 io.on('connection', (socket) => {
   console.log('A user connected');
@@ -52,6 +54,8 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// Server, start only if not test
 if (require.main === module) {
   server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
